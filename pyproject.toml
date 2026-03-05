@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stactools-nisar"
+version = "0.0.1"
+description = "A stactools plugin for NISAR HDF5 (GCOV/RSLC) to STAC."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Orange Monk Labs", email = "code@orangemonk.net" }
+]
+dependencies = [
+  "stactools>=0.4.0",
+  "click>=8.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/orangemonk/stactools-nisar"
+Repository = "https://github.com/orangemonk/stactools-nisar"
+
+# Provide a `stactools` alias command that runs the same CLI as `stac`.
+[project.scripts]
+stactools = "stactools.cli.cli:run_cli"
+
+# Requested: entry point group for stactools plugin registration metadata.
+[project.entry-points."stactools.extensions"]
+nisar = "stactools.nisar"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
